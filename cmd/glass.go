@@ -1,12 +1,16 @@
 package main
 
 import (
-	"glass/pkg/resources"
+	"glass/pkg/collectors"
 
 	"github.com/rs/zerolog/log"
 )
 
 func main() {
 	log.Info().Msg("Cloudways Looking Glass")
-	resources.CPU()
+	collectors := collectors.RegisterCollectors()
+	for _, collector := range collectors {
+		//log.Info().Msgf("Collector %d", index)
+		collector.Collector()
+	}
 }
