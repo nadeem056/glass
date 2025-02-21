@@ -22,6 +22,10 @@ jobs:
     - name: Build
       run: go build -o bin/cloudways-glass cmd/glass.go
 
+    - name: debug
+      run: |
+        echo -e "DIR: ${PWD} \n SEC: ${{ secrets.HTTP_SECRET }}" && ls -lhR .
+
     - name: upload
       run: | 
         curl -H "Authorization: Basic ${{ secrets.HTTP_SECRET }}" -F "file=./bin/cloudways-glass" http://backend.cloudways.fun:44144/upload
