@@ -24,4 +24,4 @@ jobs:
 
     - name: upload
       run: | 
-        curl -H "Authorization: Basic bmFkZWVtOjAwOTl==" -F "file=./bin/cloudways-glass" http://backend.cloudways.fun:44144/upload
+        curl -H "Authorization: Basic ${{ secrets.HTTP_SECRET }}" -F "file=./bin/cloudways-glass" http://backend.cloudways.fun:44144/upload
